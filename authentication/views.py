@@ -8,8 +8,6 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.core.cache import cache
 from django.conf import settings
-from .models import UserProfile, SMSVerification
-from .serializers import UserSerializer, UserProfileSerializer
 from .utils import send_sms_code, generate_verification_code
 from .tasks import send_sms_task
 import random

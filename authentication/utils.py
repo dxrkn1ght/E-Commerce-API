@@ -1,6 +1,5 @@
 import random
 import string
-import requests
 from django.conf import settings
 import logging
 

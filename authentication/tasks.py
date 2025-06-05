@@ -1,5 +1,4 @@
 from celery import shared_task
-import requests
 import logging
 from django.conf import settings
 

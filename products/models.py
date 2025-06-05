@@ -54,22 +54,19 @@ class ProductImage(models.Model):
         return f"{self.product.title} - Image"
 
 class ProductLike(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='likes')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='product_likes')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        unique_together = ('product', 'user')
+
 
 class Review(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='product_reviews')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     comment = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        unique_together = ('product', 'user')
 
     def __str__(self):
         return f"{self.product.title} - {self.rating} stars"
